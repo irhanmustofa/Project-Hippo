@@ -70,7 +70,7 @@ include "koneksi.php";
             <input class="form-control" type="email" name="email_user" placeholder="Email">
           </div>
           <div class="form-group position-relative">
-            <input class="form-control" id="psw-input" type="password" name="password" placeholder="Enter Password">
+            <input class="form-control" id="psw-input" type="password" name="password_user" placeholder="Enter Password">
             <div class="position-absolute" id="password-visibility"><i class="bi bi-eye"></i><i
                 class="bi bi-eye-slash"></i></div>
           </div>
@@ -106,9 +106,9 @@ include "koneksi.php";
 <?php 
 if (isset($_POST["submit"])){
   $email = $_POST["email_user"];
-  $password = $_POST["password"];
+  $password = $_POST["password_user"];
 
-  $cek = $koneksi -> query ("SELECT * FROM user WHERE email_user = '$email' AND password = '$password'");
+  $cek = $koneksi -> query ("SELECT * FROM user WHERE email_user = '$email' AND password_user = '$password'");
 
 	$hitung = $cek-> num_rows;
 

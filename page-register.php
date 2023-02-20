@@ -63,28 +63,28 @@ include "koneksi.php";
       <!-- Register Form -->
       <div class="register-form mt-4">
         <h6 class="mb-3 text-center">Register to continue</h6>
-        <form action="page-otp.html">
+        <form method="post">
 
-        <div class="mb-3">
-					<label class="form-label">Nama Lengkap</label>
-					<input type="text" class="form-control" name="nama_user" required="required">
-				</div>
-				<div class="mb-3">
-							<label class="form-label">Status</label>
-							<select class="form-control" name="level_user" required="required">
-								<option value="">--Pilih Status--</option>
-									<option value="investor">Investor</option>
-									<option value="usahawan">Usahawan</option>
-							</select>
-						</div>
-				<div class="mb-3">
-					<label class="form-label">Email</label>
-					<input type="text" class="form-control" name="email_user" required="required">
-				</div>
+          <div class="mb-3">
+            <label class="form-label">Nama Lengkap</label>
+            <input type="text" class="form-control" name="nama_user" required="required">
+          </div>
+          <div class="mb-3">
+                <label class="form-label">Status</label>
+                <select class="form-control" name="level_user" required="required">
+                  <option value="">--Pilih Status--</option>
+                    <option value="investor">Investor</option>
+                    <option value="usahawan">Usahawan</option>
+                </select>
+              </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="text" class="form-control" name="email_user" required="required">
+          </div>
 			
           <div class="form-group text-start mb-3 position-relative">
             <label class="form-label">Password</label>
-            <input class="form-control" id="psw-input" type="password" >
+            <input class="form-control" id="psw-input" type="password" name="password_user" >
             <div class="position-absolute" id="password-visibility"><i class="bi bi-eye"></i><i
                 class="bi bi-eye-slash"></i></div>
           </div>
@@ -97,10 +97,10 @@ include "koneksi.php";
           <div id="CaptchaImageCode" class="pt-2">
             <canvas id="CapCode" class="capcode" width="300" height="80"></canvas>
           </div>
-          <input class="form-control" id="psw-input" type="password" placeholder="Masukkan Captcha">
+          <input class="form-control" id="" type="text" name="captcha" placeholder="Masukkan Captcha">
 
           <div class="mb-3" id="pswmeter"></div><br>
-          <button class="btn w-100 text-white" type="submit" style="background-color: #f7645a;">Sign Up</button>
+          <button class="btn w-100 text-white" type="submit" name="simpan" style="background-color: #f7645a;">Sign Up</button>
         </form>
       </div>
       <!-- Login Meta -->
@@ -123,3 +123,18 @@ include "koneksi.php";
 </body>
 
 </html>
+
+<?php 
+if (isset($_POST["simpan"])) {
+  $level = $_POST["level_user"];
+	$nama = $_POST["nama_user"];
+	$email = $_POST["email_user"];
+	$password = $_POST["password_user"];
+	$captcha = $_POST["captcha"];
+
+	$koneksi -> query("INSERT INTO user (level_user,nama_user,email_user,password_user,captcha) VALUES('$level','$nama','$email','$password','$captcha')");
+
+	echo "<script>alert ('Registrasi Berhasil')</script>";
+	echo "<script>location = 'page-login.php'</script>";
+}
+?>
