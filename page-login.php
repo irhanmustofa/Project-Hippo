@@ -80,7 +80,7 @@ include "koneksi.php";
       <!-- Login Meta -->
       <div class="login-meta-data text-center"><a class="stretched-link forgot-password d-block mt-3 mb-1"
           href="page-forget-password.html">Forgot Password?</a>
-        <p class="mb-0">Didn't have an account? <a class="stretched-link" href="page-register.html">Register Now</a></p>
+        <p class="mb-0">Didn't have an account? <a class="stretched-link" href="page-register.php">Register Now</a></p>
       </div>
     </div>
   </div>
