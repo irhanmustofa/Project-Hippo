@@ -1,3 +1,8 @@
+<?php 
+include "koneksi.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,16 +65,16 @@
       <!-- Register Form -->
       <div class="register-form mt-4">
         <h6 class="mb-3 text-center">Log in to continue.</h6>
-        <form action="page-home.html">
+        <form method="post">
           <div class="form-group">
-            <input class="form-control" type="text" placeholder="Username">
+            <input class="form-control" type="email" name="email_user" placeholder="Email">
           </div>
           <div class="form-group position-relative">
-            <input class="form-control" id="psw-input" type="password" placeholder="Enter Password">
+            <input class="form-control" id="psw-input" type="password" name="password" placeholder="Enter Password">
             <div class="position-absolute" id="password-visibility"><i class="bi bi-eye"></i><i
                 class="bi bi-eye-slash"></i></div>
           </div>
-          <button class="btn w-100 text-white" type="submit" style="background-color: #f7645a;">Sign In</button>
+          <button class="btn w-100 text-white" type="submit" style="background-color: #f7645a;" name="submit";>Sign In</button>
         </form>
       </div>
       <!-- Login Meta -->
@@ -97,3 +102,36 @@
 </body>
 
 </html>
+
+<?php 
+if (isset($_POST["submit"])){
+  $email = $_POST["email_user"];
+  $password = $_POST["password"];
+
+  $cek = $koneksi -> query ("SELECT * FROM user WHERE email_user = '$email' AND password = '$password'");
+
+	$hitung = $cek-> num_rows;
+
+	if ($hitung==1) {
+		$login = $cek->fetch_assoc();
+		if ($login["level_user"]=="admin") {
+			$_SESSION["admin"] = $login;
+			echo "<script>alert('Login berhasil,selamat datang')</script>";
+			echo "<script>location = '/'</script>";
+		}elseif ($login["level_user"]=="investor") {
+			$_SESSION["investor"] = $login;
+			echo "<script>alert('Login berhasil,selamat datang')</script>";
+			echo "<script>location = '/'</script>";
+		}elseif ($login["level_user"]=="usahawan") {
+			$_SESSION["usahawan"] = $login;
+			echo "<script>alert('Login berhasil,selamat datang')</script>";
+			echo "<script>location = '/'</script>";
+		}
+	}else{
+		echo "<script>alert('username atau password salah')</script>";
+		echo "<script>location = 'page-login.php'</script>";
+	}
+
+}
+
+?>

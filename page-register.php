@@ -1,3 +1,6 @@
+<?php 
+include "koneksi.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,29 +64,42 @@
       <div class="register-form mt-4">
         <h6 class="mb-3 text-center">Register to continue</h6>
         <form action="page-otp.html">
-          <div class="form-group text-start mb-3">
-            <input class="form-control" type="text" placeholder="Email address">
-          </div>
-          <div class="form-group text-start mb-3">
-            <input class="form-control" type="text" placeholder="Username">
-          </div>
-          <div class="form-group text-start mb-3">
-            <input class="form-control" type="text" placeholder="Username">
-          </div>
-          <div class="form-group text-start mb-3">
-            <input class="form-control" type="text" placeholder="Username">
-          </div>
+
+        <div class="mb-3">
+					<label class="form-label">Nama Lengkap</label>
+					<input type="text" class="form-control" name="nama_user" required="required">
+				</div>
+				<div class="mb-3">
+							<label class="form-label">Status</label>
+							<select class="form-control" name="level_user" required="required">
+								<option value="">--Pilih Status--</option>
+									<option value="investor">Investor</option>
+									<option value="usahawan">Usahawan</option>
+							</select>
+						</div>
+				<div class="mb-3">
+					<label class="form-label">Email</label>
+					<input type="text" class="form-control" name="email_user" required="required">
+				</div>
+			
           <div class="form-group text-start mb-3 position-relative">
-            <input class="form-control" id="psw-input" type="password" placeholder="New password">
+            <label class="form-label">Password</label>
+            <input class="form-control" id="psw-input" type="password" >
             <div class="position-absolute" id="password-visibility"><i class="bi bi-eye"></i><i
                 class="bi bi-eye-slash"></i></div>
           </div>
-          <div class="mb-3" id="pswmeter"></div>
-          <div class="form-check mb-3">
-            <input class="form-check-input" id="checkedCheckbox" type="checkbox" value="" checked>
-            <label class="form-check-label text-muted fw-normal" for="checkedCheckbox">I agree with the terms &amp;
-              policy.</label>
+          <div class="form-group text-start mb-3 position-relative">
+            <label class="form-label">Masukkan captcha sesuai dengan gambar</label>
+
           </div>
+
+          <input type="button" class="btn btn-info" onclick="CreateCaptcha()" value="Generate Captcha">
+          <div id="CaptchaImageCode" class="pt-2">
+            <canvas id="CapCode" class="capcode" width="300" height="80"></canvas>
+          </div>
+          <input class="form-control" id="psw-input" type="password" placeholder="Masukkan Captcha">
+
+          <div class="mb-3" id="pswmeter"></div><br>
           <button class="btn w-100 text-white" type="submit" style="background-color: #f7645a;">Sign Up</button>
         </form>
       </div>
@@ -94,6 +110,8 @@
     </div>
   </div>
   <!-- All JavaScript Files -->
+  <script src="js/captcha.js"></script>
+  <script src="js/jquery.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/internet-status.js"></script>
   <script src="js/dark-rtl.js"></script>
