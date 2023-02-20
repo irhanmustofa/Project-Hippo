@@ -117,15 +117,15 @@ if (isset($_POST["submit"])){
 		if ($login["level_user"]=="admin") {
 			$_SESSION["admin"] = $login;
 			echo "<script>alert('Login berhasil,selamat datang')</script>";
-			echo "<script>location = '/'</script>";
+			echo "<script>location = 'page-home.html/'</script>";
 		}elseif ($login["level_user"]=="investor") {
 			$_SESSION["investor"] = $login;
 			echo "<script>alert('Login berhasil,selamat datang')</script>";
-			echo "<script>location = '/'</script>";
+			echo "<script>location = 'page-home.html/'</script>";
 		}elseif ($login["level_user"]=="usahawan") {
 			$_SESSION["usahawan"] = $login;
 			echo "<script>alert('Login berhasil,selamat datang')</script>";
-			echo "<script>location = '/'</script>";
+			echo "<script>location = 'page-home.html/'</script>";
 		}
 	}else{
 		echo "<script>alert('username atau password salah')</script>";

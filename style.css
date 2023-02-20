@@ -2048,19 +2048,6 @@ a.affan-element-item i {
   font-size: 14px;
 }
 
-.ReloadBtn {
-  background: url('img/refresh.png') left top no-repeat;
-  background-size: 100%;
-  width: 32px;
-  height: 32px;
-  border: 0px;
-  outline: none;
-  position: absolute;
-  bottom: 30px;
-  left: 310px;
-  cursor: pointer;
-}
-
 .login-meta-data a {
   font-size: 14px;
   color: #1f0757;

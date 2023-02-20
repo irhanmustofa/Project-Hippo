@@ -105,7 +105,7 @@ include "koneksi.php";
       </div>
       <!-- Login Meta -->
       <div class="login-meta-data text-center">
-        <p class="mt-3 mb-0">Already have an account? <a class="stretched-link" href="page-login.html">Login</a></p>
+        <p class="mt-3 mb-0">Already have an account? <a class="stretched-link" href="page-login.php">Login</a></p>
       </div>
     </div>
   </div>
